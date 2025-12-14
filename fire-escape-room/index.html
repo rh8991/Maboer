@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חדר בריחה - מכבי האש</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcomeScreen" class="active">
+            <h1>🚒 חדר הבריחה - מכבי האש 🚒</h1>
+            <p class="subtitle">משימה דחופה! הבניין בוער!</p>
+
+            <div class="intro-box">
+                <h3>📢 תדריך חירום!</h3>
+                <p><strong>המשימה שלכם:</strong> יש לכם 10 דקות לכבות את כל השריפות בבניין!</p>
+                <p><strong>איך עושים את זה?</strong> לכל שריפה יש צורך שונה - תצטרכו לזהות איזה כלי מתאים לכל מקרה.</p>
+                <p><strong>זכרו:</strong> משולש האש = חמצן + חומר דליק + חום. כדי לכבות - צריך להסיר אחד מהם!</p>
+                <p><strong>חשוב לדעת:</strong> 💨 חמצן (O₂) מחזק את האש | 🌫️ פחמן דו-חמצני (CO₂) מכבה את האש</p>
+            </div>
+
+            <div class="input-group">
+                <label for="teamName">🏆 שם צוות הכבאים:</label>
+                <input type="text" id="teamName" placeholder="הכניסו שם לצוות שלכם...">
+            </div>
+
+            <button class="btn" onclick="startMission()">התחל משימה! 🚨</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="gameScreen">
+            <div class="alert-banner">
+                🚨 חירום! השריפות מתפשטות! 🚨
+            </div>
+
+            <div class="game-header">
+                <div class="team-name">
+                    <div style="font-size: 0.7em; margin-bottom: 5px;">🚒 צוות</div>
+                    <div id="teamNameDisplay">מכבי האש</div>
+                </div>
+
+                <div class="timer">
+                    <div style="font-size: 0.4em; margin-bottom: 5px;">⏱️ זמן נותר</div>
+                    <div id="timerDisplay">10:00</div>
+                </div>
+
+                <div class="score">
+                    <div style="font-size: 0.9em; margin-bottom: 5px;">⭐ נקודות</div>
+                    <div class="score-number" id="scoreDisplay">0</div>
+                </div>
+            </div>
+
+            <div class="mission-panel" id="missionPanel">
+                <div class="mission-title">📋 משימה נוכחית</div>
+                <div class="mission-text" id="missionText">בחרו שריפה לכבות!</div>
+            </div>
+
+            <div class="room-container">
+                <div class="fire-zones" id="fireZones"></div>
+
+                <div class="tools-panel" id="toolsPanel" style="display: none;">
+                    <div class="tools-title">🧰 בחרו את הכלי המתאים:</div>
+                    <div class="triangle-reminder">
+                        <strong>זכרו:</strong> צריך להסיר אחד מ-3 המרכיבים - חמצן / חום / חומר דליק
+                    </div>
+                    <div class="tools-grid" id="toolsGrid"></div>
+                </div>
+            </div>
+
+            <button class="hint-button" onclick="showHint()">💡 רמז</button>
+        </div>
+
+        <!-- Victory Screen -->
+        <div id="victoryScreen">
+            <div class="victory-content">
+                <h1>🎉 ניצחון! 🎉</h1>
+                <div class="victory-stars">⭐⭐⭐</div>
+                <h2>כיביתם את כל השריפות!</h2>
+
+                <div class="victory-score" id="finalScore">0</div>
+                <div class="victory-time">⏱️ זמן: <span id="finalTime">0:00</span></div>
+
+                <div class="summary-box">
+                    <h3>📚 מה למדנו:</h3>
+                    <ul>
+                        <li>✅ משולש האש: חמצן + חומר דליק + חום</li>
+                        <li>✅ מים מסירים חום ומכבים שריפות רגילות</li>
+                        <li>✅ שמיכה מסירה חמצן מהאש</li>
+                        <li>✅ מטף CO₂ מדכא בעירה (בניגוד לחמצן שמחזק!)</li>
+                        <li>✅ לשריפות שונות צריך פתרונות שונים</li>
+                    </ul>
+                </div>
+
+                <button class="btn" onclick="location.reload()">משימה חדשה! 🔄</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info Popup -->
+    <div class="overlay" id="overlay" onclick="closePopup()"></div>
+    <div class="info-popup" id="infoPopup">
+        <div class="popup-icon" id="popupIcon"></div>
+        <div class="popup-title" id="popupTitle"></div>
+        <div class="popup-content" id="popupContent"></div>
+        <button class="close-popup" onclick="closePopup()">המשך ➜</button>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
